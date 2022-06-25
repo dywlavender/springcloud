@@ -1,0 +1,13 @@
+server:
+  port: 9001
+
+#hystrix:
+#  dashboard:
+#    p
+#hystrix:
+#  dashboard:
+#    proxy-stream-allow-list: "*"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka

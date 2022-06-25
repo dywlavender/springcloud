@@ -1,0 +1,36 @@
+server:
+  port: 8801
+spring:
+  application:
+    name: cloud-stream-rabbitmq-provider
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          enviroment:
+            spring:
+              rabbitmq:
+                addresses: amqp://192.168.233.133:5672
+                password: "123"
+                username: "admin"
+      bindings:
+        output:
+          destination: studyExchange
+          content-type: application/json
+          binder: defaultRabbit
+  rabbitmq:
+    addresses: amqp://192.168.233.133:5672
+    password: "123"
+    username: "admin"
+eureka:
+  client:
+    register-with-eureka: true  #将自己注册进EurekaServer
+    fetch-registry: true   #获取注册信息
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/  #,http://eureka7002.com:7002/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
+    lease-expiration-duration-in-seconds: 5 # 如果现在超过了5秒的间隔（默认是90秒）
+    instance-id: send-8801.com  # 在信息列表时显示主机名称
+    prefer-ip-address: true     # 访问的路径变为IP地址
