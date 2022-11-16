@@ -22,6 +22,9 @@ spring:
           predicates:
           - Path=/payment/lb/**
 
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 eureka:
   instance:
